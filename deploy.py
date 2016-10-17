@@ -17,8 +17,8 @@ def build_python(_config):
         os.mkdir('target/staging')
 
     staging_path = 'target/staging/'
-    copy_tree('env/lib/python2.7/site-packages/', staging_path)
-    copy_tree('app/', staging_path)
+    copy_tree(os.path.join(_config['python_env'], 'lib/python2.7/site-packages/'), staging_path)
+    copy_tree(_config['python_source'], staging_path)
 
     package_zip_path = 'target/' + '%s-%s' % (_config['id'], _config['version'])
     _file = shutil.make_archive(package_zip_path, 'zip', staging_path)
