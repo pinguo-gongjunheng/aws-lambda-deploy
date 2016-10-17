@@ -66,6 +66,24 @@ def deploy_lambda(_config, _package_file):
         print update_response
 
 
+"""
+example of python project deploy.json
+{
+  "id": "project id just a mark",
+  "name": "lambda function name",
+  "description": "lambda function description",
+  "schema": "python", //or java
+  "version": "some-version", //lambda function version
+  "handler": "handler.handle", //lambda function handler
+  "role": "some:lambda:function:role", //lambda function execution role
+  "s3_bucket": "some_s3_bucket", //s3 bucket where lambda function package upload to
+  "timeout": 60, //lambda function running time
+  "memory_size": 256, //lambda function memory
+  "publish": true, //is published
+  "python_env": "env/", //virtual env root path
+  "python_source": "app/" //python source path
+}
+"""
 if __name__ == '__main__':
     try:
         with open('deploy.json') as f:
